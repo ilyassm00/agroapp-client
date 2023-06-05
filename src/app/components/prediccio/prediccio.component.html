@@ -1,34 +1,18 @@
 <app-navbar></app-navbar>
 <div class="container">
-  <div class="d-flex justify-content-between mt-5 mb-5">
-    <div>
-      <h1><strong>Predicció meteorlògica</strong></h1>
-      <hr />
-      <h4 class="mt-3" *ngIf="municipi !== undefined">- {{ municipi.nom }}</h4>
-    </div>
-    <div>
-      <button type="button" class="btn btn-dark" (click)="goBack()">
-        Torna enrere
-      </button>
-    </div>
-  </div>
   <div>
-    <h3>Temps</h3>
-  </div>
-  <hr />
-  <div>
-    <div class="d-flex justify-content-around align-items-center">
+    <div *ngIf="prediccioDiaria!=undefined" class="d-flex justify-content-around align-items-center">
       <div class="d-flex justify-content-between align-items-center">
         <img
           src="http://static-m.meteo.cat/assets-w3/images/meteors/estatcel/23.svg"
           alt="Despejado"
         />
-        <p class="fs-3">24 ºC</p>
-        <p class="p-3 fs-3">Precipitacions: 20%</p>
+        <p class="fs-3">{{prediccioDiaria.dies[0].variables.tmax.valor + prediccioDiaria.dies[0].variables.tmax.unitat}} </p>
+        <p class="p-3 fs-3">Precipitacions: {{prediccioDiaria.dies[0].variables.precipitacio.valor + prediccioDiaria.dies[0].variables.precipitacio.unitat}}</p>
       </div>
       <div>
-        <p class="fs-4"><strong>20/05/2023</strong></p>
-        <p class="fs-4 text-center">Assolejat</p>
+        <p class="fs-4"><strong>{{ prediccioDiaria.dies[0].data | date : "dd/MM/yyyy" }}</strong></p>
+        <p class="fs-4 text-center">{{prediccioDiaria.dies[0].estatCel.nom}}</p>
       </div>
     </div>
     <hr />
@@ -46,9 +30,10 @@
         <a class="nav-link" (click)="selectGraficaPrecipitacio()">Precipitacions</a>
       </li>
     </ul>
-    <div *ngIf="diaSelected<3 && graficaTemperatura" class="chart-wrapper">
-      <h4 class="ml-3 mt-3">20/05/2023</h4>
-      <!-- <h4 class="ml-3 mt-3">{{prediccioHoraria.dies[diaSelected].data | date : "dd/MM/yyyy"}}</h4> -->
+    <div *ngIf="diaSelected<3 && graficaTemperatura && 
+          prediccioHoraria != undefined" 
+          class="chart-wrapper">
+      <h4 class="ml-3 mt-3">{{prediccioHoraria.dies[diaSelected].data | date : "dd/MM/yyyy"}}</h4>
       <canvas
         baseChart
         width="300"
@@ -57,9 +42,10 @@
         [data]="lineChartTemperatura"
       ></canvas>
     </div>
-    <div *ngIf="diaSelected<3 && graficaPrecipitacio" class="chart-wrapper">
-      <h4 class="ml-3 mt-3">20/05/2023</h4>
-      <!-- <h4 class="ml-3 mt-3">{{prediccioHoraria.dies[diaSelected].data | date : "dd/MM/yyyy"}}</h4> -->
+    <div *ngIf="diaSelected<3 && graficaPrecipitacio&& 
+          prediccioHoraria != undefined" 
+          class="chart-wrapper">
+      <h4 class="ml-3 mt-3">{{prediccioHoraria.dies[diaSelected].data | date : "dd/MM/yyyy"}}</h4>
       <canvas
         baseChart
         width="300"
@@ -72,25 +58,26 @@
       <h5 class="p-5">No hi ha dades horàries del día seleccionat</h5>
     </div>
     <hr>
-    <div class="d-flex flex-wrap wrap justify-content-around">
-      <div *ngFor="let p of prueba; index as i">
+    <div *ngIf="prediccioHoraria!=undefined && prediccioDiaria!=undefined" 
+          class="d-flex flex-wrap wrap justify-content-around">
+      <div *ngFor="let dia of prediccioDiaria.dies; index as i">
         <div class="dia d-flex flex-column p-3" (click)="selectDia(i)">
           <div class="d-flex justify-content-center">
-            <p class="fecha"><strong>20/05</strong></p>
+            <p> {{ dia.data | date : "dd/MM" }} </p>
           </div>
           <div class="d-flex justify-content-center">
             <img
               class="imagen"
-              src="http://static-m.meteo.cat/assets-w3/images/meteors/estatcel/3.svg"
-              alt="Despejado"
+              [src]="dia.estatCel.icona"
+              alt="dia.nom"
             />
           </div>
           <div class="d-flex flex-wrap wrap justify-content-around">
             <p class="temperatura ml-1 mr-1 text-danger">
-              <strong>27 ºC</strong>
+              <strong>{{ dia.variables.tmax.valor + dia.variables.tmax.unitat }}</strong>
             </p>
             <p class="temperatura ml-1 mr-1 text-primary">
-              <strong>12 ºC</strong>
+              <strong>{{ dia.variables.tmin.valor + dia.variables.tmin.unitat }}</strong>
             </p>
             <p class="precipitaciones">
               <img
@@ -99,39 +86,19 @@
                 width="15"
                 height="15"
               />
-              <strong>12%</strong>
+              <strong>{{ dia.variables.precipitacio.valor + dia.variables.precipitacio.unitat }}</strong>
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- <div *ngIf="prediccioHoraria!=undefined && prediccioDiaria!=undefined">
-    <div class="d-flex justify-content-between">
-      <div *ngFor="let dia of prediccioDiaria.dies">
-        <div class="d-flex flex-column">
-          <div class="d-flex justify-content-between">
-            <p> {{ dia.data | date : "dd/MM" }} </p>
-          </div>
-          <div>
-            <img [src]="dia.estatCel.icona" alt="dia.nom">
-          </div>
-          <div>
-            <p> {{ dia.variables.tmax.valor + dia.variables.tmax.unitat }} </p>
-            <p> {{ dia.variables.tmin.valor + dia.variables.tmin.unitat }} </p>
-            <p> {{ dia.variables.precipitacio.valor + dia.variables.precipitacio.unitat }} </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div>
     <h3>Índex Ultravioleta</h3>
   </div>
   <hr/>
-  <div class="d-flex flex-column">
-    <h4 class="ml-3 mt-3">20/05/2023</h4>
-    <!-- <h4 class="ml-3 mt-3">{{ prediccioUvi.uvi[0].date | date : "dd/MM/yyyy"}}</h4> -->
+  <div *ngIf="prediccioUvi != undefined" class="d-flex flex-column">
+    <h4 class="ml-3 mt-3">{{ prediccioUvi.uvi[0].date | date : "dd/MM/yyyy"}}</h4>
     <div class="chart-wrapper">
       <canvas
         baseChart
@@ -141,8 +108,7 @@
         [data]="barChart1"
       ></canvas>
     </div>
-    <h4 class="ml-3 mt-5">21/05/2023</h4>
-    <!-- <h4 class="ml-3 mt-3">{{ prediccioUvi.uvi[1].date | date : "dd/MM/yyyy"}}</h4> -->
+    <h4 class="ml-3 mt-3">{{ prediccioUvi.uvi[1].date | date : "dd/MM/yyyy"}}</h4>
     <div class="chart-wrapper">
       <canvas
         baseChart
@@ -152,8 +118,7 @@
         [data]="barChart2"
       ></canvas>
     </div>
-    <h4 class="ml-3 mt-5">22/05/2023</h4>
-    <!-- <h4 class="ml-3 mt-3">{{ prediccioUvi.uvi[2].date | date : "dd/MM/yyyy"}}</h4> -->
+    <h4 class="ml-3 mt-3">{{ prediccioUvi.uvi[2].date | date : "dd/MM/yyyy"}}</h4>
     <div class="chart-wrapper">
       <canvas
         baseChart
