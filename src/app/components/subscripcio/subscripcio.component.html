@@ -1,0 +1,50 @@
+<div
+  class="d-flex contenedor-inici position-absolute top-50 start-50 translate-middle p-4 mb-3 text-dark"
+>
+  <form>
+    <div class="d-flex justify-content-end">
+      <button type="button" class="btn btn btn-dark" (click)="logOut()">
+        <i
+          class="fa-solid fa-arrow-right-from-bracket fa-xl"
+          style="color: #ffffff"
+        ></i>
+      </button>
+    </div>
+    <div
+      class="mb-3 form-element d-flex align-items-center justify-content-center p-3 flex-column mt-2"
+    >
+      <h1 class="form-label text-light bg-dark">
+        Benvingut a <strong>AGRO</strong>STATS
+      </h1>
+      <h2 class="form-label text-light bg-dark">{{ username }}</h2>
+      <h4 class="form-label text-light text-center bg-dark mt-5">
+        Per a poder utilitzar aquest servei és necessari comprar una subscripció
+      </h4>
+      <h5 class="form-label text-light text-center bg-dark mt-2">
+        El cost mensual és de 4,99€, però disposes d'una prova de 14 díes
+      </h5>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        <button
+          type="button"
+          class="btn btn-success w-100 p-3 fs-4"
+          (click)="subscriure()"
+        >
+          SUBSCRIURE'S
+        </button>
+      </div>
+  </form>
+</div>
+<div id="automaticCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/images/manzanas.jpg" class="d-block w-100 img-fluid" />
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/tomates.jpg" class="d-block w-100 img-fluid" />
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/trigo.jpg" class="d-block w-100 img-fluid" />
+    </div>
+  </div>
+</div>

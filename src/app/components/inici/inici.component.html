@@ -1,0 +1,86 @@
+<div
+  class="d-flex contenedor-inici position-absolute top-50 start-50 translate-middle p-4 mb-3 text-dark"
+>
+  <form>
+    <div class="d-flex justify-content-between">
+      <button
+        type="button"
+        class="btn btn btn-dark d-flex justify-content-between align-items-center"
+        routerLink="/perfil"
+      >
+        <i class="fa-solid fa-user fa-xl" style="color: #ffffff"></i>
+        <div class="text-light text-center ms-3 fs-5">
+          {{ username }}
+        </div>
+      </button>
+      <button type="button" class="btn btn btn-dark" (click)="logOut()">
+        <i
+          class="fa-solid fa-arrow-right-from-bracket fa-xl"
+          style="color: #ffffff"
+        ></i>
+      </button>
+    </div>
+    <div
+      class="mb-3 form-element d-flex align-items-center justify-content-center p-3 flex-column"
+    >
+      <img class="imagen" src="assets/images/hoja.png" alt="Agrostats" />
+      <h1 class="form-label text-light bg-dark text-center mt-3">
+        Benvingut a <strong>AGRO</strong>STATS
+      </h1>
+      <h4 class="form-label text-light text-center bg-dark mt-3">
+        Per a poder ajudar-te has d'indicar on es localitzen els teus cultius
+      </h4>
+    </div>
+    <div class="d-flex flex-wrap justify-content-around">
+      <div class="mb-3 form-element">
+        <label class="form-label text-light bg-dark"
+          >Selecciona una comarca</label
+        >
+        <select
+          [(ngModel)]="codiComarca"
+          (ngModelChange)="buscarMunicipis()"
+          name="comarca"
+          class="form-select"
+        >
+          <option *ngFor="let comarca of comarques" [value]="comarca.codi">
+            {{ comarca.nom }}
+          </option>
+        </select>
+      </div>
+      <div class="mb-3 form-element">
+        <label class="form-label text-light bg-dark"
+          >Selecciona un municipi</label
+        >
+        <select [(ngModel)]="codiMunicipi" name="municipi" class="form-select">
+          <option *ngFor="let municipi of municipis" [value]="municipi.codi">
+            {{ municipi.nom }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+      <button
+        type="button"
+        class="btn btn-secondary confirmar-button"
+        [disabled]="codiMunicipi === undefined"
+        (click)="navegarMenu()"
+      >
+        CONFIRMAR
+      </button>
+    </div>
+  </form>
+</div>
+
+<div id="automaticCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="assets/images/manzanas.jpg" class="d-block w-100 img-fluid" />
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/tomates.jpg" class="d-block w-100 img-fluid" />
+    </div>
+    <div class="carousel-item">
+      <img src="assets/images/trigo.jpg" class="d-block w-100 img-fluid" />
+    </div>
+  </div>
+</div>

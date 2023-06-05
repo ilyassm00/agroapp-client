@@ -1,0 +1,85 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="row justify-content-center">
+    <div
+      *ngIf="municipi !== undefined"
+      class="center-container text-black p-3 d-flex justify-content-center align-items-center"
+    >
+      <div class="fs-1">
+        <strong>{{ municipi.nom }}</strong>
+      </div>
+      <div *ngIf="favorit" class="star" (click)="changeFav()">
+        <i class="ms-3 fa-solid fa-star fa-xl" style="color: #000000"></i>
+      </div>
+      <div *ngIf="!favorit" class="star" (click)="changeFav()">
+        <i class="ms-3 fa-regular fa-star fa-xl" style="color: #8b8b8b;"></i>
+      </div>
+    </div>
+    <hr />
+    <div
+      class="col-md-4 col-sm-12 mb-1"
+      style="align-items: center; display: flex"
+    >
+      <a
+        (click)="selectEstacions()"
+        class="card card-estacions bg-success text-white d-flex h-100"
+        style="text-decoration: none"
+      >
+        <div
+          class="card-body p-3 text-center d-flex flex-column justify-content-center"
+        >
+          <h2 class="card-title text-white"><strong>ESTACIONS</strong></h2>
+          <p class="card-text text-white mt-3">
+            Informació sobre les Estacions Meteorològiques Automàtiques (EMA)
+            del municipi indicat. Cada EMA s’encarrega de mesurar un gran nombre
+            de variables mitjançant un conjunt de sensors
+          </p>
+        </div>
+      </a>
+    </div>
+    <div
+      class="col-md-4 col-sm-12 mb-1"
+      style="align-items: center; display: flex"
+    >
+      <a
+        (click)="selectPrediccio()"
+        class="card card-prediccio bg-danger text-white d-flex h-100"
+        style="text-decoration: none"
+      >
+        <div
+          class="card-body p-3 text-center d-flex flex-column justify-content-center"
+        >
+          <h2 class="card-title text-white"><strong>PREDICCIÓ</strong></h2>
+          <p class="card-text text-white mt-3">
+            Informació sobre la predicció meteorològica municipal del temps, on
+            es mesuren diverses variables meteorològiques com la temperatura,
+            les precipitacions o el UVI
+          </p>
+        </div>
+      </a>
+    </div>
+    <div
+      class="col-md-4 col-sm-12 mb-1"
+      style="align-items: center; display: flex"
+    >
+      <a
+        (click)="selectEstatAigua()"
+        class="card card-aigua bg-primary text-white d-flex h-100"
+        style="text-decoration: none"
+      >
+        <div
+          class="card-body p-3 text-center d-flex flex-column justify-content-center"
+        >
+          <h2 class="card-title text-white">
+            <strong>ESTAT DE L'AIGUA</strong>
+          </h2>
+          <p class="card-text text-white mt-3">
+            Informació sobre l'aigua en temps real en els diferents punts de
+            control que té el Canal d'Urgell i les diferentes comportes,
+            boqueres o recloses
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

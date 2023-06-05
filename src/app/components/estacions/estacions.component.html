@@ -1,0 +1,60 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="d-flex justify-content-between mt-5">
+    <div>
+      <h1><strong>Estacions meteorològiques automàtiques</strong></h1>
+      <hr>
+      <h4 class="mt-3" *ngIf="municipi !== undefined">- {{ municipi.nom }}</h4>
+    </div>
+    <div>
+      <button type="button" class="btn btn-dark" (click)="goBack()">
+        Torna enrere
+      </button>
+    </div>
+  </div>
+  <div class="text-center text-grey mt-5" *ngIf="estacions.length==0">
+    <h5 class="p-5">Aquest municipi no té ninguna estació meteorològica</h5>
+  </div>
+  <div class="row mt-5" *ngIf="estacions.length!=0">
+    <div class="col-md-4 col-sm-12 mb-3" *ngFor="let estacio of estacions">
+      <a 
+        [ngClass]="{'cursor-pointer': estacio.estats[estacio.estats.length - 1].codi == 2}"
+        (click)="detailEstacio(estacio.codi, estacio.estats[estacio.estats.length - 1].codi)" 
+        class="card d-flex h-100">
+        <div class="card-header text-center bg-dark text-white">
+          <h4 class="card-title">
+            <strong>{{ estacio.nom }}</strong>
+          </h4>
+        </div>
+        <div
+          class="card-body p-3 d-flex flex-column justify-content-between"
+        >
+          <p class="card-text mt-1 text-black">
+            <strong>Codi:</strong> {{ estacio.codi }}
+          </p>
+          <p class="card-text mt-1 text-black">
+            <strong>Direcció:</strong> {{ estacio.emplacament }}
+          </p>
+          <p
+            class="card-text mt-1 text-center text-white bg-danger p-3"
+            *ngIf="estacio.estats[estacio.estats.length - 1].codi == 1"
+          >
+            Desmantellada
+          </p>
+          <p
+            class="card-text mt-1 text-center text-white bg-success p-3"
+            *ngIf="estacio.estats[estacio.estats.length - 1].codi == 2"
+          >
+            Operativa
+          </p>
+          <p
+            class="card-text mt-1 text-center text-white bg-danger p-3"
+            *ngIf="estacio.estats[estacio.estats.length - 1].codi == 3"
+          >
+            Baixa temporal
+          </p>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

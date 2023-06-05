@@ -1,0 +1,17 @@
+.container {
+  padding-top: 60px;
+  padding-bottom: 15px;
+}
+
+.mapa{
+  border: 2px solid gray;
+  border-radius: 4px;
+}
+
+.text-grey {
+  color: grey;
+}
+
+.form-select {
+  width: 30% !important;
+}

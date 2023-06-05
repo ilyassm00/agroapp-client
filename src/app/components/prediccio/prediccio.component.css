@@ -1,0 +1,37 @@
+.container {
+  padding-top: 60px;
+  padding-bottom: 15px;
+}
+
+.temperatura {
+  font-size: 12px;
+}
+
+.precipitaciones {
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+.imagen {
+  max-width: 70px;
+}
+
+.fecha {
+font-size: 14px;
+}
+
+.dia{
+  cursor: pointer;
+  transition: all .4s ease;
+  border-radius: 4px;
+}
+
+.dia:hover{
+  background-color: lightgrey;
+  transition: all .4s ease;
+}
+
+.text-grey {
+  color: grey;
+}

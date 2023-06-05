@@ -1,0 +1,16 @@
+.container {
+  padding-top: 60px;
+  padding-bottom: 15px;
+}
+
+.text-grey {
+  color: grey;
+}
+
+.flex-item {
+  flex-basis: 50%;
+}
+
+.star {
+  cursor: pointer;
+}

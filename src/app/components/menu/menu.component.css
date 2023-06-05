@@ -1,0 +1,83 @@
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+.container {
+  padding-top: 60px;
+  padding-bottom: 15px;
+  height: 100%;
+  display: flex;
+}
+
+.card-estacions {
+  transition: 0.3s !important;
+  border-radius: 15px;
+  box-shadow: 1px 1px 13px 3px rgba(0, 255, 81, 0.511);
+}
+
+.card-estacions:hover {
+  cursor: pointer !important;
+  background-color: #fff !important;
+  color: green !important;
+  transition: 0.3s !important;
+}
+
+.card-estacions:hover h2 {
+  color: green !important;
+  transition: 0.3s !important;
+}
+
+.card-estacions:hover p {
+  color: green !important;
+  transition: 0.3s !important;
+}
+
+.card-prediccio {
+  border-radius: 15px;
+  box-shadow: 1px 1px 13px 3px rgba(255, 1, 1, 0.459);
+}
+
+.card-prediccio:hover {
+  cursor: pointer !important;
+  background-color: #fff !important;
+  color: red !important;
+  transition: 0.3s !important;
+}
+
+.card-prediccio:hover h2 {
+  color: red !important;
+  transition: 0.3s !important;
+}
+
+.card-prediccio:hover p {
+  color: red !important;
+  transition: 0.3s !important;
+}
+
+.card-aigua {
+  border-radius: 15px;
+  box-shadow: 1px 1px 13px 3px rgba(1, 65, 160, 0.397);
+}
+
+.card-aigua:hover {
+  cursor: pointer !important;
+  background-color: #fff !important;
+  color: blue !important;
+  transition: 0.3s !important;
+}
+
+.card-aigua:hover h2 {
+  color: blue !important;
+  transition: 0.3s !important;
+}
+
+.card-aigua:hover p {
+  color: blue !important;
+  transition: 0.3s !important;
+}
+
+.star {
+  cursor: pointer;
+}
