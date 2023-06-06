@@ -48,7 +48,6 @@
     </ul>
     <div *ngIf="diaSelected<3 && graficaTemperatura" class="chart-wrapper">
       <h4 class="ml-3 mt-3">20/05/2023</h4>
-      <!-- <h4 class="ml-3 mt-3">{{prediccioHoraria.dies[diaSelected].data | date : "dd/MM/yyyy"}}</h4> -->
       <canvas
         baseChart
         width="300"
@@ -59,7 +58,6 @@
     </div>
     <div *ngIf="diaSelected<3 && graficaPrecipitacio" class="chart-wrapper">
       <h4 class="ml-3 mt-3">20/05/2023</h4>
-      <!-- <h4 class="ml-3 mt-3">{{prediccioHoraria.dies[diaSelected].data | date : "dd/MM/yyyy"}}</h4> -->
       <canvas
         baseChart
         width="300"
@@ -106,32 +104,12 @@
       </div>
     </div>
   </div>
-  <!-- <div *ngIf="prediccioHoraria!=undefined && prediccioDiaria!=undefined">
-    <div class="d-flex justify-content-between">
-      <div *ngFor="let dia of prediccioDiaria.dies">
-        <div class="d-flex flex-column">
-          <div class="d-flex justify-content-between">
-            <p> {{ dia.data | date : "dd/MM" }} </p>
-          </div>
-          <div>
-            <img [src]="dia.estatCel.icona" alt="dia.nom">
-          </div>
-          <div>
-            <p> {{ dia.variables.tmax.valor + dia.variables.tmax.unitat }} </p>
-            <p> {{ dia.variables.tmin.valor + dia.variables.tmin.unitat }} </p>
-            <p> {{ dia.variables.precipitacio.valor + dia.variables.precipitacio.unitat }} </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
   <div>
     <h3>Índex Ultravioleta</h3>
   </div>
   <hr/>
   <div class="d-flex flex-column">
     <h4 class="ml-3 mt-3">20/05/2023</h4>
-    <!-- <h4 class="ml-3 mt-3">{{ prediccioUvi.uvi[0].date | date : "dd/MM/yyyy"}}</h4> -->
     <div class="chart-wrapper">
       <canvas
         baseChart
@@ -142,7 +120,6 @@
       ></canvas>
     </div>
     <h4 class="ml-3 mt-5">21/05/2023</h4>
-    <!-- <h4 class="ml-3 mt-3">{{ prediccioUvi.uvi[1].date | date : "dd/MM/yyyy"}}</h4> -->
     <div class="chart-wrapper">
       <canvas
         baseChart
@@ -153,7 +130,6 @@
       ></canvas>
     </div>
     <h4 class="ml-3 mt-5">22/05/2023</h4>
-    <!-- <h4 class="ml-3 mt-3">{{ prediccioUvi.uvi[2].date | date : "dd/MM/yyyy"}}</h4> -->
     <div class="chart-wrapper">
       <canvas
         baseChart
