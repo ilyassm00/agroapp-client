@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IniciComponent } from './components/inici/inici.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './components/menu/menu.component';
@@ -40,7 +39,6 @@ import { PerfilComponent } from './components/perfil/perfil.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SlickCarouselModule,
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
