@@ -49,10 +49,4 @@ export class ReferenciaService {
       `${this.apiServerUrl}/estacions/${codiEstacio}`
     );
   }
-
-  public getEstatCelByCodi(codi: number): Observable<EstatCel> {
-    return this.http.get<EstatCel>(
-      `${this.apiServerUrl}/estatCel/${codi}`
-    );
-  }
 }

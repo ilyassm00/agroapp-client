@@ -17,22 +17,5 @@ export class puntoControlService {
       `${this.apiServerUrl}/puntosControl/`
     );
   }
-
-  public getRemotas(): Observable<string[]> {
-    return this.http.get<string[]>(
-      `${this.apiServerUrl}/remotas/`
-    );
-  }
-
-  public getVariablesByRemota(remota: string): Observable<string[]> {
-    return this.http.get<string[]>(
-      `${this.apiServerUrl}/variables/${remota}`
-    );
-  }
-
-  public getPuntoControlByRemotaAndVariable(remota: string, variable: string): Observable<PuntoControl> {
-    return this.http.get<PuntoControl>(
-      `${this.apiServerUrl}/puntoControl/${remota}/${variable}`
-    );
-  }
+  
 }
