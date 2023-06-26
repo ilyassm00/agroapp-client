@@ -4,12 +4,13 @@ import { Observable } from 'rxjs';
 import { PrediccioHoraria } from '../models/prediccioHoraria.model';
 import { PrediccioDiaria } from '../models/prediccioDiaria.model';
 import { PrediccioUvi } from '../models/prediccioUvi.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PrediccioService {
-  private apiServerUrl = 'http://localhost:8080';
+  private apiServerUrl = environment.API;
 
   constructor(private http: HttpClient) {}
 

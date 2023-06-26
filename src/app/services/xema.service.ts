@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { VariablesEstacio } from '../models/variablesEstacio.model';
 import { MultiVariableMesurada } from '../models/multiVariableMesurada.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class XemaService {
-  private apiServerUrl = 'http://localhost:8080';
+  private apiServerUrl = environment.API;
 
   constructor(private http: HttpClient) {}
 
